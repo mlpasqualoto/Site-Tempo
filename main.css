@@ -5,43 +5,48 @@ body {
     background-image: url(./img/mountains-1412683.svg);
     background-size: cover;
     background-position: center center;
+    backdrop-filter: blur(5px);
 }
 
 body * {
     box-sizing: border-box;
+    white-space: nowrap;  /* impede quebra de linha */
 }
 
 #main-screen {
     width: 100vw;
     height: 100vh;
+    padding: 0 25%;
 }
 
 header {
     width: 100%;
-    height: 10%;
+    height: 12%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .input-wrapper {
     display: flex;
-    width: 50%;
+    width: 100%;
     height: 40px;
     background-color: #9B7EBD;
     border-radius: 20px;
 }
 
-.input-search::placeholder {
-    color: #EEEEEE;
+#input-search::placeholder {
+    color: black;
 }
 
-.input-search {
+#input-search {
     width: 100%;
     border: none;
     background-color: transparent;
     padding: 20px;
     outline: none;
+    color: black;
 }
 
 .btn-search {
@@ -52,23 +57,41 @@ header {
 }
 
 .fa-search {
-    color: #EEEEEE;
+    color: black;
 }
 
 main {
     width: 100%;
-    height: 90%;
+    height: 88%;
+    display: flex;
+    align-items: flex-start;
+    padding: 50px 0;
+}
+
+#main {
+    width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: black;
-    padding: 0 25%;
-    gap: 150px;
+    gap: 100px;
+    color: black;
 }
 
 h1 {
     margin: 0;
+}
+
+#error {
+    width: 100%;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0;
+    color: red;
 }
 
 .location, .main-temp, .weather {
@@ -77,7 +100,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: yellow;
+    color: black;
 }
 
 .city {
@@ -86,7 +109,10 @@ h1 {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background-color: green;
+}
+
+.font-city {
+    font-size: 50px;
 }
 
 .day {
@@ -95,7 +121,6 @@ h1 {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background-color: blue;
 }
 
 .temp {
@@ -103,7 +128,11 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: orange;
+}
+
+.font-temp {
+    font-weight: 800;
+    font-size: 100px;
 }
 
 .main {
@@ -111,7 +140,10 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
+}
+
+#weather-main {
+    font-size: 50px;
 }
 
 .min-max {
@@ -119,7 +151,6 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: grey;
 }
 
 #bar {

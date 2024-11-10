@@ -13,32 +13,35 @@
     <div id="main-screen">
         <header>
             <div class="input-wrapper">
-                <input type="text" class="input-search" placeholder="Search City" spellcheck="false" autocomplete="off">
-                <button class="btn-search" onclick=""><i class="fa fa-search"></i></button>
+                <input type="text" id="input-search" placeholder="Search for a city" spellcheck="false" autocomplete="off">
+                <button class="btn-search" onclick="getCity()"><i class="fa fa-search"></i></button>
             </div>
+            <p id="error"></p>
         </header>
         <main>
-            <section class="location">
-                <div class="city">
-                    <h1>Londrina</h1><h1>PR</h1>
-                </div>
-                <div class="day">
-                    <h1>Sábado</h1><h1>22 Novembro 2024</h1>
-                </div>
-            </section>
-            <section class="main-temp">
-                <div class="temp">
-                    <h1>30</h1><h1>°C</h1>
-                </div>
-            </section>
-            <section class="weather">
-                <div class="main">
-                    <h1>Haze</h1>
-                </div>
-                <div class="min-max">
-                    <h1>25</h1><h1>°C</h1><h1 id="bar">/</h1><h1>30</h1><h1>°C</h1>
-                </div>
-            </section>
+            <div id="main">
+                <section class="location">
+                    <div class="city">
+                        <h1 id="name" class="font-city"></h1><h1 id="country" class="font-city"></h1>
+                    </div>
+                    <div class="day">
+                        <h1>Sábado</h1><h1>22 Novembro 2024</h1>
+                    </div>
+                </section>
+                <section class="main-temp">
+                    <div class="temp">
+                        <h1 id="temp" class="font-temp"></h1><h1 class="font-temp">°C</h1>
+                    </div>
+                </section>
+                <section class="weather">
+                    <div class="main">
+                        <h1 id="weather-main"></h1>
+                    </div>
+                    <div class="min-max">
+                        <h1 id="temp-min"></h1><h1>°C</h1><h1 id="bar">/</h1><h1 id="temp-max"></h1><h1>°C</h1>
+                    </div>
+                </section>
+            </div> 
         </main>
     </div>
 </body>
