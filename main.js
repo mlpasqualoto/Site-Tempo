@@ -6,10 +6,10 @@ async function getWeather(city = "Londrina") {
   
   document.getElementById("name").textContent = data.name;
   document.getElementById("country").textContent = data.sys.country;
-  document.getElementById("temp").textContent = data.main.temp;
+  document.getElementById("temp").textContent = data.main.temp.toFixed(1);
   document.getElementById("weather-main").textContent = data.weather[0].main;
-  document.getElementById("temp-min").textContent = data.main.temp_min;
-  document.getElementById("temp-max").textContent = data.main.temp_max;
+  document.getElementById("temp-min").textContent = data.main.temp_min.toFixed(1);
+  document.getElementById("temp-max").textContent = data.main.temp_max.toFixed(1);
   
 }
 
