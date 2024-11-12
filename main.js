@@ -1,6 +1,10 @@
 const keyWeather = "d8b1cf18868e8e33b4a2b29437860538";
 const keyDay = "76QEYH68IURS";
 
+function capitalizeFirstLetter(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 async function getWeather(city = "Londrina") {  
   try {
     const responseWeather = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${keyWeather}`);
@@ -28,7 +32,20 @@ async function getWeather(city = "Londrina") {
     const year = onlyDate.split("-")[0];
 
     // separa o mês da data cheia
-    const month = onlyDate.split("-")[1];
+    const monthNum = onlyDate.split("-")[1];
+    
+    // conver o mês númerico em string
+    const yearMonth = {'01': 'Janeiro', '02': 'Fevereiro', '03': 'Março', '04': 'Abril', '05': 'Maio', '06': 'Junho', '07': 'Julho', '08': 'Agosto', '09': 'Setembro', '10': 'Outubro', '11': 'Novembro', '12': 'Dezembro'};
+    let month = '';
+    for (let key in yearMonth) {
+      if (key === monthNum) {
+        month = yearMonth[key];
+      };
+    };
+
+    const country = dataDay.countryName;
+
+    const time = fullDate.split(" ")[1];
     
     document.getElementById("name").textContent = dataWeather.name;
     document.getElementById("temp").textContent = dataWeather.main.temp.toFixed(1);
@@ -36,12 +53,13 @@ async function getWeather(city = "Londrina") {
     document.getElementById("temp-min").textContent = dataWeather.main.temp_min.toFixed(1);
     document.getElementById("temp-max").textContent = dataWeather.main.temp_max.toFixed(1);
     document.getElementById("region").textContent = dataDay.regionName;
-    document.getElementById("day-week").textContent = dayWeek;
+    document.getElementById("day-week").textContent = capitalizeFirstLetter(dayWeek);
     document.getElementById("day").textContent = day;
     document.getElementById("year").textContent = year;
     document.getElementById("month").textContent = month;
+    document.getElementById("country").textContent = country;
+    document.getElementById("time").textContent = time;
     
-
   } catch (error) {
     document.getElementById("error").textContent = "Erro no servidor";
     return;
