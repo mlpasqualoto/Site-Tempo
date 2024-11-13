@@ -169,3 +169,48 @@ h1 {
 #bar {
     padding: 0 10px;
 }
+
+@media only screen and (max-width: 600px) {
+    header {
+        height: auto;
+        padding: 50px 0 0 0;
+    }
+
+    #main-screen {
+        padding: 0;
+    }
+
+    .input-wrapper {
+        width: 90%;
+    }
+    
+    #input-search::placeholder {
+        color: transparent;
+    }    
+
+    #main-screen {
+        width: 100%;
+        height: auto;
+    }
+
+    #main {
+        gap: 50px;
+    }
+
+    .font-city {
+        font-size: 25px;
+    }
+
+    .font-day {
+        font-size: 15px;
+    }
+
+    .font-time {
+        font-size: 15px;
+    }
+
+    .font-temp {
+        font-weight: 800;
+        font-size: 60px;
+    }
+}
