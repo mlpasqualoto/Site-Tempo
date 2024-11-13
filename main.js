@@ -1,11 +1,15 @@
 const keyWeather = "d8b1cf18868e8e33b4a2b29437860538";
 const keyDay = "76QEYH68IURS";
 
+function cleanVal() {
+  document.getElementById("input-search").value = "";
+}
+
 function capitalizeFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-async function getWeather(city = "Londrina") {  
+async function getWeather(city = "São Paulo") {  
   try {
     const responseWeather = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${keyWeather}`);
     const dataWeather = await responseWeather.json();
@@ -69,16 +73,15 @@ async function getWeather(city = "Londrina") {
 getWeather();
 
 async function getCity() {
-    const city = document.getElementById("input-search").value.trim();
+    const city = document.getElementById("input-search");
+    const cityName = city.value.trim();
     const error = document.getElementById("error");
 
     error.textContent = "";
-    if (city === '' || !isNaN(Number(city))) {
+    if (cityName === '' || !isNaN(Number(cityName))) {
         error.textContent = "Digite o nome de uma cidade para consulta!";
         return;
     }
 
-
-
-    getWeather(city);
+    getWeather(cityName);
 }
