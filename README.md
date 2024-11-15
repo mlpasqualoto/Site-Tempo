@@ -1,6 +1,6 @@
 # Weather App
 
-Este é um simples aplicativo de consulta de clima desenvolvido em HTML, CSS e JavaScript. O usuário pode inserir o nome de uma cidade e obter informações detalhadas de temperatura, condição climática, data e hora local.
+Este é um aplicativo de consulta de clima desenvolvido em HTML, CSS e JavaScript, que utiliza um servidor Node.js com Express para fazer solicitações às APIs de clima e de fuso horário. O usuário pode inserir o nome de uma cidade e obter informações detalhadas de temperatura, condição climática, data e hora local.
 
 - **Desktop**
 ![Captura de tela 2024-11-12 233931](https://github.com/user-attachments/assets/6342104e-31ad-4036-b80c-24da772cd5ef)
