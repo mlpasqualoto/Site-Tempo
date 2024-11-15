@@ -30,9 +30,10 @@ Este é um aplicativo de consulta de clima desenvolvido em HTML, CSS e JavaScrip
 - **HTML**: Estrutura da interface, incluindo campos de entrada, botão de pesquisa e áreas de exibição de resultados.
 - **CSS**: Estilos e ajustes responsivos para desktop e mobile.
 - **JavaScript** (Frontend):
-  - Função `getWeather(city)`: Realiza requisições ao servidor para dados de clima e horário e exibe os resultados.
-  - Função `getCity()`: Valida o nome da cidade inserido e aciona a função de consulta.
-  - Função `capitalizeFirstLetter(str)`: Formata o texto para exibir o dia da semana com a primeira letra maiúscula.
+  - `main.js`:  
+    - Função `getWeather(city)`: Realiza requisições ao servidor para dados de clima e horário e exibe os resultados.
+    - Função `getCity()`: Valida o nome da cidade inserido e aciona a função de consulta.
+    - Função `capitalizeFirstLetter(str)`: Formata o texto para exibir o dia da semana com a primeira letra maiúscula.
 - **Node.js (Backend)**:
   - `server.js`: Configuração do servidor Express que utiliza as APIs OpenWeather e TimeZoneDB. A chave das APIs é armazenada em variáveis de ambiente.
 
