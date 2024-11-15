@@ -1,6 +1,3 @@
-const keyWeather = "d8b1cf18868e8e33b4a2b29437860538";
-const keyDay = "76QEYH68IURS";
-
 function cleanVal() {
   document.getElementById("input-search").value = "";
 }
@@ -11,15 +8,13 @@ function capitalizeFirstLetter(str) {
 
 async function getWeather(city = "São Paulo") {  
   try {
-    const responseWeather = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${keyWeather}`);
-    const dataWeather = await responseWeather.json();
+    const responseWeather = await fetch(`http://127.0.0.1:5501/api/weather?city=${city}`);
+    const { weather, timezone } = await responseWeather.json();
 
-    const lat = dataWeather.coord.lat;
-    const lon = dataWeather.coord.lon;
-    const responseDay = await fetch(`http://api.timezonedb.com/v2.1/get-time-zone?key=${keyDay}&format=json&by=position&lat=${lat}&lng=${lon}`);
-    const dataDay = await responseDay.json();
+    console.log("Weather Data:", weather);
+    console.log("Timezone Data:", timezone);
 
-    const fullDate = dataDay.formatted;
+    const fullDate = timezone.formatted;
 
     // separa a data cheia das horas
     const onlyDate = fullDate.split(" ")[0];
@@ -40,23 +35,18 @@ async function getWeather(city = "São Paulo") {
     
     // conver o mês númerico em string
     const yearMonth = {'01': 'Janeiro', '02': 'Fevereiro', '03': 'Março', '04': 'Abril', '05': 'Maio', '06': 'Junho', '07': 'Julho', '08': 'Agosto', '09': 'Setembro', '10': 'Outubro', '11': 'Novembro', '12': 'Dezembro'};
-    let month = '';
-    for (let key in yearMonth) {
-      if (key === monthNum) {
-        month = yearMonth[key];
-      };
-    };
+    const month = yearMonth[monthNum];
 
-    const country = dataDay.countryName;
+    const country = timezone.countryName;
 
     const time = fullDate.split(" ")[1];
     
-    document.getElementById("name").textContent = dataWeather.name;
-    document.getElementById("temp").textContent = dataWeather.main.temp.toFixed(1);
-    document.getElementById("weather-main").textContent = dataWeather.weather[0].main;
-    document.getElementById("temp-min").textContent = dataWeather.main.temp_min.toFixed(1);
-    document.getElementById("temp-max").textContent = dataWeather.main.temp_max.toFixed(1);
-    document.getElementById("region").textContent = dataDay.regionName;
+    document.getElementById("name").textContent = weather.name;
+    document.getElementById("temp").textContent = weather.main.temp.toFixed(1);
+    document.getElementById("weather-main").textContent = weather.weather[0].main;
+    document.getElementById("temp-min").textContent = weather.main.temp_min.toFixed(1);
+    document.getElementById("temp-max").textContent = weather.main.temp_max.toFixed(1);
+    document.getElementById("region").textContent = timezone.regionName;
     document.getElementById("day-week").textContent = capitalizeFirstLetter(dayWeek);
     document.getElementById("day").textContent = day;
     document.getElementById("year").textContent = year;
@@ -66,9 +56,8 @@ async function getWeather(city = "São Paulo") {
     
   } catch (error) {
     document.getElementById("error").textContent = "Erro no servidor";
-    return;
-  }
-}
+  };
+};
 
 getWeather();
 
@@ -84,4 +73,4 @@ async function getCity() {
     }
 
     getWeather(cityName);
-}
+};
